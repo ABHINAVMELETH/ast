@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 import Button from "./Button";
 
-const Navbar = ({ toggle }) => {
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <div className="w-full h-20 bg-black sticky top-0 z-30">
         <div className="container mx-auto px-4 h-full">
           <div className="flex justify-between items-center h-full">
             <Logo />
+            {/* Mobile Hamburger Button */}
             <button
               type="button"
               className="inline-flex items-center md:hidden"
@@ -27,7 +34,9 @@ const Navbar = ({ toggle }) => {
                 />
               </svg>
             </button>
-            <ul className="hidden md:flex gap-x-6 text-white ">
+
+            {/* Desktop Menu */}
+            <ul className="hidden md:flex gap-x-6 text-white">
               <li>
                 <Link href="/">
                   <p>Home</p>
@@ -39,7 +48,7 @@ const Navbar = ({ toggle }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/blog">
+                <Link href="/blogs">
                   <p>Blog</p>
                 </Link>
               </li>
@@ -54,9 +63,45 @@ const Navbar = ({ toggle }) => {
                 </Link>
               </li>
             </ul>
+
             {/* <div className="hidden md:block">
               <Button />
             </div> */}
+          </div>
+
+          {/* Mobile Dropdown */}
+          <div
+            className={`${
+              isOpen ? "max-h-60" : "max-h-0"
+            } overflow-hidden transition-max-height duration-300 ease-in-out md:hidden`}
+          >
+            <ul className="flex flex-col gap-y-4 text-white py-4">
+              <li>
+                <Link href="/">
+                  <p>Home</p>
+                </Link>
+              </li>
+              <li>
+                <Link href="/events">
+                  <p>Events</p>
+                </Link>
+              </li>
+              <li>
+                <Link href="/blogs">
+                  <p>Blog</p>
+                </Link>
+              </li>
+              <li>
+                <Link href="/team">
+                  <p>Team</p>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contacts">
+                  <p>Contacts</p>
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

@@ -1,29 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 
-const contact = () => {
+const Contact = () => {
   useEffect(() => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycbw234eavqkgyvFEnrWfEThCeDSRireTWIAzPx1f7nZ-tqyC5uSv-tQYNOWdFEh6FXLi/exec';
     const form = document.forms['submit-to-google-sheet'];
-    const msg=document.getElementById("msg")
+    const msg = document.getElementById('msg');
 
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const response = await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
+        const response = await fetch(scriptURL, {
+          method: 'POST',
+          body: new FormData(form),
+        });
         console.log('Success!', response);
-        response
-          .json()
-          .then((data) => {
-            console.log('Response data:', data);
-            // Further processing based on the data
-            msg.innerHTML = 'Thank You For Subscribing';
-            setTimeout(function () {
-              msg.innerHTML = '';
-            }, 5000);
-          })
-          .catch((error) => {
-            console.error('Error in response!', error);
-          });
+        const data = await response.json();
+        console.log('Response data:', data);
+        msg.innerHTML = 'Thank You For Subscribing';
+        setTimeout(() => {
+          msg.innerHTML = '';
+        }, 5000);
       } catch (error) {
         console.error('Error!', error.message);
       }
@@ -31,148 +27,47 @@ const contact = () => {
 
     form.addEventListener('submit', handleSubmit);
 
-    // Cleanup event listener when the component unmounts
     return () => {
       form.removeEventListener('submit', handleSubmit);
     };
   }, []);
 
-
-
-
-
-
-  const footerStyle = {
-    padding: '20px 0',
-    backgroundColor: 'black',
-    zIndex: '100',
-    position : 'relative',
-  };
-
-  const headingStyle = {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: 'white',
-  };
-
-  const socialIconStyle = {
-    marginRight: '50px',
-    fontSize: '24px',
-    color: 'white',
-  };
-
-  const socialIconsContainer = {
-    display: 'flex',
-    justifyContent: 'center',
-    paddingTop: '20px',
-    paddingBottom:'25px',
-    
-  };
-  const formStyle = {
-    backgroundColor:'white',
-    display:'flex',
-    width: 'fit-content',
-    alignItems: 'center',
-    margin: 'auto',
-    
-
-  };
-  const inputStyle ={
-    border:'0',
-    outline:'none',
-    padding:'10px 20px',
-    height:'40px',
-    width:'400px',
-    fontSize:'16px',
-  }
-  const buttonStyle ={
-    background:'#49108B',
-    border:'none',
-    outline:'none',
-    height:'40px',
-    width:'80px',
-    cursor:'pointer',
-    display: 'flex',
-    justifyContent: 'center', // Center the content horizontally
-    alignItems: 'center', // Center the content vertically
-  }
-  const spanStyles={
-    color:'#E26EE5',
-    marginTop:'10px',
-    display:'block',
-
-  }
-  
-
-  const listStyle = {
-    listStyle: 'none',
-    padding: '0',
-    color:'white',
-  };
-
-  const listItemStyle = {
-    marginBottom: '10px',
-  };
-
-  const copyrightStyle = {
-    fontSize: '12px',
-    marginTop: '20px',
-    color: 'white',
-  };
   return (
-    <footer style={footerStyle}>
-      <div className="text-center">
-        <h3 style={headingStyle}>CONTACT US</h3>
-        <div style={socialIconsContainer} className="social-icons">
-          <div className="facebook"><a href="#"><i style={socialIconStyle} className="fab fa-facebook-f"></i></a></div>
-          <div className="linkedin"><a href="#"><i style={socialIconStyle} className="fab fa-linkedin-in"></i></a></div>
-          <div className="twitter"><a href="#"><i style={socialIconStyle} className="fab fa-twitter"></i></a></div>
-          <div className="instagram"><a href="#"><i style={socialIconStyle} className="fab fa-instagram"></i></a></div>
+    <footer className="bg-black py-8 relative z-10 text-white">
+      <div className="text-center mb-6">
+        <h3 className="text-2xl font-bold">CONTACT US</h3>
+        <div className="flex justify-center space-x-4 sm:space-x-8 pt-5 pb-6">
+          <a href="#" className="text-white text-xl"><i className="fab fa-facebook-f"></i></a>
+          <a href="#" className="text-white text-xl"><i className="fab fa-linkedin-in"></i></a>
+          <a href="#" className="text-white text-xl"><i className="fab fa-twitter"></i></a>
+          <a href="#" className="text-white text-xl"><i className="fab fa-instagram"></i></a>
         </div>
       </div>
-      <div className="text-center">
-        
-        <form action="" style={formStyle} name="submit-to-google-sheet" className="justify-content-center align-items-center">
-          
-          <input type="email" name="email" className="form-control" style={inputStyle} placeholder="Enter your email to subscribe" />
-          <button type="submit"  className="btn btn-primary ml-2" style={buttonStyle}><img src="/images/send-icon.png" width="30px"/></button>
-          
+      <div className="text-center items-center mb-6 px-4">
+        <form
+          name="submit-to-google-sheet"
+          className="bg-white flex  sm:flex-row items-center mx-auto max-w-md sm:max-w-lg"
+        >
+          <input
+            type="email"
+            name="email"
+            className="border-none outline-none px-4 py-2 w-full sm:flex-grow"
+            placeholder="Enter your email to subscribe"
+          />
+          <button
+            type="submit"
+            className="bg-purple-700 text-white px-4 py-2 mt-4 sm:mt-0 sm:ml-2 flex items-center justify-center mb-2 mr-2 sm:mt-2"
+          >
+            <img src="/images/send-icon.png" width="30px" alt="Send" />
+          </button>
         </form>
-        <span id="msg" style={spanStyles}></span>
+        <span id="msg" className="text-pink-500 mt-4 block"></span>
       </div>
-      <div className="text-center">
-        <div className="row" style={{ display: 'flex',justifyContent: 'space-around' }}>
-          <div className="col-md-6 col-sm-12 mb-2">
-            <ul style={listStyle} className="list-unstyled">
-              <li style={listItemStyle}>Name : </li>
-              <li style={listItemStyle}>Email : </li>
-              <li style={listItemStyle}>Mob : </li>
-            </ul>
-          </div>
-          <div className="col-md-6 col-sm-12">
-            <ul style={listStyle} className="list-unstyled">
-              <li style={listItemStyle}>Name :</li>
-              <li style={listItemStyle}>Email :</li>
-              <li style={listItemStyle}>Mob :</li>
-            </ul>
-          </div>
-        </div>
+      <div className="text-center mt-6">
+        <p className="text-xs">Made by AstroCET. All rights reserved.</p>
       </div>
-      <div className="text-center">
-        <p style={copyrightStyle}>Made by AstroCET. All rights reserved.</p>
-      </div>
-      
     </footer>
   );
 };
 
-export default contact;
-
-
-
-
-
-    
-
-
-
+export default Contact;

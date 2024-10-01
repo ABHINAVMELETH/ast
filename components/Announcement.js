@@ -16,7 +16,7 @@ const Announcement = () => {
     <section className="bg-transparent z-10 relative">
       <hr className="mx-auto max-w-3xl border-t border-gray-300 mt-20 mb-16" />
       <div className="text-center mt-7">
-        <h1 className="text-4xl font-bold text-white">Announcements</h1>
+        <h1 className="text-4xl font-bold text-white md:mb-4">Announcements</h1>
       </div>
 
       <div className="slider-container max-w-screen-lg mx-auto">
