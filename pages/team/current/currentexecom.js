@@ -33,7 +33,7 @@ const Currentexecom=()=>{
                 </a>
 
       {/* Email Icon */}
-      <a href="{member[0].email}">
+      <a href="mailto:{member[0].email}">
         <img
           src="/images/gmail-logo.png" 
           alt="Email" 

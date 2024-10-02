@@ -8,7 +8,8 @@ const blogs = [
     author: "Jean Jacques",
     date: "20 March 2029",
     modalTitle: "WORLD OF BLACK HOLES",
-    modalContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea."
+    modalContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga eajjkfjfjfsuibfbbbbb  nic e man hoping to meet hi,m on e day such that no on e can help homim create the magical moment tof the day that the ghanainaa suarexz millie bobb jhon.hoping to meet the greatest man iin tthe world such that there would not meydhsbdhsbhfbsbhjbchjxbcjhxbhchydiufjbfkjnsajjfsig ",
+    modalImageSrc: "/images/blogphotos/balckhole.jpg"
   },
   {
     title: "SPACE EXPLORATION",
@@ -17,7 +18,8 @@ const blogs = [
     author: "John Doe",
     date: "15 April 2029",
     modalTitle: "THE FUTURE OF SPACE EXPLORATION",
-    modalContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit..."
+    modalContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit...",
+    modalImageSrc: "/images/space-exploration-modal.png"
   },
   
   // Add more blog objects as needed
@@ -66,15 +68,18 @@ const BlogGrid = () => {
 
       {modal && activeBlog && (
         <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="modal-content">
-            <h1 className="text-4xl font-bold text-blue-900 mt-5 mb-5 text-center">{activeBlog.modalTitle}</h1>
-            <p>{activeBlog.modalContent}</p>
-            <button className="close-modal" onClick={toggleModal}>
-              CLOSE
-            </button>
-          </div>
+        <div onClick={toggleModal} className="overlay"></div>
+        <div className="modal-content p-5 rounded-lg shadow-lg max-w-2xl mx-auto mt-10">
+          <h1 className="text-4xl font-bold mt-5 mb-10 text-center">{activeBlog.modalTitle}</h1>
+          <img src={activeBlog.modalImageSrc} alt="modal image" className="w-90 h-20 mb-5 mx-auto rounded-lg" />
+          <p className="text-lg mb-5">{activeBlog.modalContent}</p>
+          <button className="close-modal bg-blue-800 text-white px-4 py-2 rounded mt-5" onClick={toggleModal}>
+            CLOSE
+          </button>
         </div>
+      </div>
+      
+      
       )}
     </div>
   );

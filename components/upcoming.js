@@ -29,8 +29,8 @@ const Upcoming = () => {
   // Define event data in an array
   const eventCards = [
     {
-      title: "Paris",
-      description: "City of love",
+      title: "Keraleeyam",
+      description: "conducted a fest webinar at the keraleeyam in comprimising the dssihhjjkfjabfjajbbjbfbsanmas fms fnshf",
       imageUrl: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a",
     },
     {
@@ -77,7 +77,7 @@ const Upcoming = () => {
       </style>
 
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-white">Upcoming Events</h1>
+        <h1 className="text-4xl font-bold text-white">Past Events</h1>
       </div>
 
       <div className="container mx-auto px-4 mt-2 md:mt-4">

@@ -37,7 +37,7 @@ const Logo = () => {
     <>
       <Link href="/" style={{ display: showButton ? "none" : "block" }}>
         <Image
-          src="/images/logo.jpg"
+          src="/images/frontpage/astrologoblack2.png"
           alt="Logo"
           width={width < 1024 ? "50" : "75"}
           height={width < 1024 ? "45" : "74"}
