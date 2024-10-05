@@ -7,6 +7,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Audiowide&display=swap');
+
+/* Apply font-family globally or create classes */
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-audiowide {
+  font-family: 'Audiowide', sans-serif;
+}
+.hover-glow:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+               0 0 30px rgba(255, 0, 255, 0.8), 
+               0 0 60px rgba(255, 0, 255, 1);
+  transition: all 0.3s ease;
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -38,6 +56,11 @@ body {
 .astro-title2{
   color: yellow;
   font-size: 30px;
+}
+.glow-effect {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6), 
+               0 0 15px rgba(255, 0, 255, 0.5), 
+               0 0 30px rgba(255, 0, 255, 0.4);
 }
 
 body.active-modal {
